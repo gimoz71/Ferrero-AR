@@ -68,6 +68,7 @@
      <Compile Include="Assets\SpaceNavigator\Runtime samples\- Fly around\Scripts\SmoothFollow2.cs" />
      <Compile Include="Assets\SpaceNavigator\Runtime samples\- Follow curve\Scripts\Torus.cs" />
      <Compile Include="Assets\SpaceNavigator\Runtime samples\- Follow curve\Scripts\TorusController.cs" />
+     <Compile Include="Assets\Splash.cs" />
      <Compile Include="Assets\TapToMove.cs" />
      <Compile Include="Assets\Vuforia\Scripts\BackgroundPlaneBehaviour.cs" />
      <Compile Include="Assets\Vuforia\Scripts\CloudRecoBehaviour.cs" />
