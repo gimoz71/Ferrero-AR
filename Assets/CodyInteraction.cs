@@ -79,7 +79,7 @@ public class CodyInteraction : MonoBehaviour {
 		// interazione Cody <-> Serena 
 		//-------------------------------
 
-		if (other.gameObject.name == "Serena") {
+		if (other.gameObject.name == "serena") {
 
 			// gurda Serena
 			transform.LookAt(targetSerena); 
