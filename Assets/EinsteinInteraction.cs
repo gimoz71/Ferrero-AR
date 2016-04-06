@@ -3,19 +3,21 @@ using System.Collections;
 
 
 //---------------------------------------------------
-// Script interazione Cody Simpson
+// Script interazione Einstein
 //---------------------------------------------------
 
-public class CodyInteraction : MonoBehaviour {
+public class EinsteinInteraction : MonoBehaviour {
 
 	// dichiarazioni variabili ed oggetti
 
 	private Animator animator;
-	public Transform targetEinstein;
+	public Transform targetCody;
 	public Transform targetSerena;
-	public AudioClip CodyIdle;
-	public AudioClip CodyToEinstein;
-	public AudioClip CodyToSerena;
+
+	//inizializzo interazioni audio
+	public AudioClip EinsteinIdle;
+	public AudioClip EinsteinToCody;
+	public AudioClip EinsteinToSerena;
 
 
 
@@ -27,7 +29,7 @@ public class CodyInteraction : MonoBehaviour {
 
 		// mi assicuro che tutte le variabil di interazione siano a zero (idle state in )
 		animator = GetComponent <Animator> ();
-		animator.SetBool ("lookEinstein", false);
+		animator.SetBool ("lookCody", false);
 		animator.SetBool ("lookSerena", false);
 		//GetComponent<AudioSource>().PlayOneShot(CodyIdle);
 	}
@@ -38,11 +40,11 @@ public class CodyInteraction : MonoBehaviour {
 	// inizio interazione audio (play one time)
 	//---------------------------------------------------
 	void OnTriggerEnter (Collider other) {
-		if (other.gameObject.name == "einstein") {
-			GetComponent<AudioSource>().PlayOneShot(CodyToEinstein);
+		if (other.gameObject.name == "cody") {
+			GetComponent<AudioSource>().PlayOneShot(EinsteinToCody);
 		}
 		if (other.gameObject.name == "serena") {
-			GetComponent<AudioSource>().PlayOneShot(CodyToSerena);
+			GetComponent<AudioSource>().PlayOneShot(EinsteinToSerena);
 		}
 	}
 
@@ -54,13 +56,13 @@ public class CodyInteraction : MonoBehaviour {
 
 
 		//-------------------------------
-		// interazione Cody <-> Einstein
+		// interazione Einstein <-> Cody
 		//-------------------------------
 
-		if (other.gameObject.name == "einstein") {
+		if (other.gameObject.name == "cody") {
 
-			// gurda Einstein
-			transform.LookAt(targetEinstein); 
+			// gurda Cody
+			transform.LookAt(targetCody); 
 
 			// script di fix assi di rotazione 
 			var rot = transform.localRotation.eulerAngles;
@@ -68,13 +70,13 @@ public class CodyInteraction : MonoBehaviour {
 			rot.x = 0f;
 			transform.localRotation = Quaternion.Euler(rot);
 
-			// attivo animazione per Cody verso Einstein
-			animator.SetBool ("lookEinstein", true);
+			// attivo animazione per Einstein verso Cody
+			animator.SetBool ("lookCody", true);
 		}
 
 
 		//-------------------------------
-		// interazione Cody <-> Serena 
+		// interazione Einstein <-> Serena 
 		//-------------------------------
 
 		if (other.gameObject.name == "Serena") {
@@ -88,7 +90,7 @@ public class CodyInteraction : MonoBehaviour {
 			rot.x = 0f;
 			transform.localRotation = Quaternion.Euler(rot);
 
-			// attivo animazione per Cody verso Serena
+			// attivo animazione per Einstein verso Serena
 			animator.SetBool ("lookSerena", true);
 		}
 
@@ -108,10 +110,10 @@ public class CodyInteraction : MonoBehaviour {
 		transform.localScale = Vector3.one;
 
 		// setto tutte le variabili di inerazione a zero
-		animator.SetBool ("lookEinstein", false);
+		animator.SetBool ("lookCody", false);
 		animator.SetBool ("lookSerena", false);
 
 		// rilancio audio no interazione
-		GetComponent<AudioSource>().PlayOneShot(CodyIdle);
+		GetComponent<AudioSource>().PlayOneShot(EinsteinIdle);
 	}
 }
