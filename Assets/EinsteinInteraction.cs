@@ -42,9 +42,13 @@ public class EinsteinInteraction : MonoBehaviour {
 	void OnTriggerEnter (Collider other) {
 		if (other.gameObject.name == "cody") {
 			GetComponent<AudioSource>().PlayOneShot(EinsteinToCody);
+			// attivo animazione per Einstein verso Cody
+			animator.SetBool ("lookCody", true);
 		}
 		if (other.gameObject.name == "serena") {
 			GetComponent<AudioSource>().PlayOneShot(EinsteinToSerena);
+			// attivo animazione per Einstein verso Serena
+			animator.SetBool ("lookSerena", true);
 		}
 	}
 
@@ -70,8 +74,7 @@ public class EinsteinInteraction : MonoBehaviour {
 			rot.x = 0f;
 			transform.localRotation = Quaternion.Euler(rot);
 
-			// attivo animazione per Einstein verso Cody
-			animator.SetBool ("lookCody", true);
+
 		}
 
 
@@ -90,8 +93,7 @@ public class EinsteinInteraction : MonoBehaviour {
 			rot.x = 0f;
 			transform.localRotation = Quaternion.Euler(rot);
 
-			// attivo animazione per Einstein verso Serena
-			animator.SetBool ("lookSerena", true);
+
 		}
 
 	}

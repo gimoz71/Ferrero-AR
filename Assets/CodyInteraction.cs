@@ -42,9 +42,13 @@ public class CodyInteraction : MonoBehaviour {
 	void OnTriggerEnter (Collider other) {
 		if (other.gameObject.name == "einstein") {
 			GetComponent<AudioSource>().PlayOneShot(CodyToEinstein);
+			// attivo animazione per Cody verso Einstein
+			animator.SetBool ("lookEinstein", true);
 		}
 		if (other.gameObject.name == "serena") {
 			GetComponent<AudioSource>().PlayOneShot(CodyToSerena);
+			// attivo animazione per Cody verso Serena
+			animator.SetBool ("lookSerena", true);
 		}
 	}
 
@@ -70,8 +74,7 @@ public class CodyInteraction : MonoBehaviour {
 			rot.x = 0f;
 			transform.localRotation = Quaternion.Euler(rot);
 
-			// attivo animazione per Cody verso Einstein
-			animator.SetBool ("lookEinstein", true);
+
 		}
 
 
@@ -90,8 +93,7 @@ public class CodyInteraction : MonoBehaviour {
 			rot.x = 0f;
 			transform.localRotation = Quaternion.Euler(rot);
 
-			// attivo animazione per Cody verso Serena
-			animator.SetBool ("lookSerena", true);
+
 		}
 
 	}

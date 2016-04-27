@@ -64,6 +64,9 @@
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
+    <Reference Include="TDx.TDxInput">
+      <HintPath>Assets\SpaceNavigator\Plugins\TDx.TDxInput.dll</HintPath>
+    </Reference>
     <Reference Include="Vuforia.UnityExtensions">
       <HintPath>Assets\Vuforia\Scripts\Internal\Vuforia.UnityExtensions.dll</HintPath>
     </Reference>
@@ -75,6 +78,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\CodyInteraction.cs" />
+    <Compile Include="Assets\EinsteinInteraction.cs" />
     <Compile Include="Assets\Scripts\ActiveStateToggler.cs" />
     <Compile Include="Assets\Scripts\ApplicationManager.cs" />
     <Compile Include="Assets\Scripts\ChangeColor.cs" />
@@ -86,6 +91,18 @@
     <Compile Include="Assets\Scripts\ScrollDetailTexture.cs" />
     <Compile Include="Assets\Scripts\ShowSliderValue.cs" />
     <Compile Include="Assets\Scripts\TiltWindow.cs" />
+    <Compile Include="Assets\SerenaInteraction.cs" />
+    <Compile Include="Assets\SpaceNavigator\Plugins\QuaternionExtensions.cs" />
+    <Compile Include="Assets\SpaceNavigator\Plugins\Settings\Locks.cs" />
+    <Compile Include="Assets\SpaceNavigator\Plugins\Settings\Settings.cs" />
+    <Compile Include="Assets\SpaceNavigator\Plugins\SpaceNavigator.cs" />
+    <Compile Include="Assets\SpaceNavigator\Plugins\SpaceNavigatorMac.cs" />
+    <Compile Include="Assets\SpaceNavigator\Plugins\SpaceNavigatorWindows.cs" />
+    <Compile Include="Assets\SpaceNavigator\Runtime samples\- Fly around\Scripts\FlyAround.cs" />
+    <Compile Include="Assets\SpaceNavigator\Runtime samples\- Fly around\Scripts\SmoothFollow2.cs" />
+    <Compile Include="Assets\SpaceNavigator\Runtime samples\- Follow curve\Scripts\Torus.cs" />
+    <Compile Include="Assets\SpaceNavigator\Runtime samples\- Follow curve\Scripts\TorusController.cs" />
+    <Compile Include="Assets\Splash.cs" />
     <Compile Include="Assets\TapToMove.cs" />
     <Compile Include="Assets\Vuforia\Scripts\BackgroundPlaneBehaviour.cs" />
     <Compile Include="Assets\Vuforia\Scripts\CloudRecoBehaviour.cs" />
@@ -126,13 +143,16 @@
     <Compile Include="Assets\Vuforia\Scripts\WireframeBehaviour.cs" />
     <Compile Include="Assets\Vuforia\Scripts\WireframeTrackableEventHandler.cs" />
     <Compile Include="Assets\Vuforia\Scripts\WordBehaviour.cs" />
-    <Compile Include="Assets\collider.cs" />
+    <Compile Include="Assets\gamba.cs" />
     <Compile Include="Assets\movement.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Fonts\Jupiter\LICENSE.txt" />
     <None Include="Assets\Materials\UI-Default-No-Alpha.shader" />
     <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
+    <None Include="Assets\SpaceNavigator\Changelog.txt" />
+    <None Include="Assets\SpaceNavigator\License.txt" />
+    <None Include="Assets\SpaceNavigator\README.txt" />
     <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />
     <None Include="Assets\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
     <None Include="Assets\Standard Assets\Characters\RollerBall\RollerBallGuidelines.txt" />

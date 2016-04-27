@@ -106,6 +106,9 @@
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
+    <Reference Include="TDx.TDxInput">
+      <HintPath>Assets\SpaceNavigator\Plugins\TDx.TDxInput.dll</HintPath>
+    </Reference>
     <Reference Include="Vuforia.UnityExtensions.Editor">
       <HintPath>Assets\Vuforia\Editor\Scripts\Vuforia.UnityExtensions.Editor.dll</HintPath>
     </Reference>
@@ -130,6 +133,8 @@
     <Compile Include="Assets\Editor\CrossPlatformInput\CrossPlatformInputInitialize.cs" />
     <Compile Include="Assets\Scripts\Editor\AlphaNumericSort.cs" />
     <Compile Include="Assets\Scripts\Editor\GUIHierarchy.cs" />
+    <Compile Include="Assets\SpaceNavigator\Editor\SpaceNavigatorWindow.cs" />
+    <Compile Include="Assets\SpaceNavigator\Editor\ViewportController.cs" />
     <Compile Include="Assets\Vuforia\Editor\Scripts\ComponentFactoryStarter\ComponentFactoryStarter.cs" />
     <Compile Include="Assets\Vuforia\Editor\Scripts\ExtensionImport.cs" />
     <Compile Include="Assets\Vuforia\Editor\Scripts\PostProcessBuildPlayer.cs" />
@@ -139,6 +144,9 @@
     <None Include="Assets\Fonts\Jupiter\LICENSE.txt" />
     <None Include="Assets\Materials\UI-Default-No-Alpha.shader" />
     <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
+    <None Include="Assets\SpaceNavigator\Changelog.txt" />
+    <None Include="Assets\SpaceNavigator\License.txt" />
+    <None Include="Assets\SpaceNavigator\README.txt" />
     <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />
     <None Include="Assets\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
     <None Include="Assets\Standard Assets\Characters\RollerBall\RollerBallGuidelines.txt" />
