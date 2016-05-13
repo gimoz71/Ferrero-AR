@@ -111,7 +111,7 @@ public class SerenaInteraction : MonoBehaviour {
 
 		// setto tutte le variabili di inerazione a zero
 		animator.SetBool ("lookCody", false);
-		animator.SetBool ("lookSerena", false);
+		animator.SetBool ("lookEinstein", false);
 
 		// rilancio audio no interazione
 		GetComponent<AudioSource>().PlayOneShot(SerenaIdle);

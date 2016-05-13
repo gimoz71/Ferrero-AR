@@ -11,6 +11,7 @@ public class CodyInteraction : MonoBehaviour {
 	// dichiarazioni variabili ed oggetti
 
 	private Animator animator;
+
 	public Transform targetEinstein;
 	public Transform targetSerena;
 
@@ -18,7 +19,6 @@ public class CodyInteraction : MonoBehaviour {
 	public AudioClip CodyIdle;
 	public AudioClip CodyToEinstein;
 	public AudioClip CodyToSerena;
-
 
 
 	//---------------------------------------------------
@@ -33,8 +33,6 @@ public class CodyInteraction : MonoBehaviour {
 		animator.SetBool ("lookSerena", false);
 		//GetComponent<AudioSource>().PlayOneShot(CodyIdle);
 	}
-
-
 
 	//---------------------------------------------------
 	// inizio interazione audio (play one time)
