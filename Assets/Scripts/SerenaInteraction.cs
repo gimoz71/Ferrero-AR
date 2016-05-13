@@ -40,6 +40,7 @@ public class SerenaInteraction : MonoBehaviour {
 	// inizio interazione audio (play one time)
 	//---------------------------------------------------
 	void OnTriggerEnter (Collider other) {
+		GetComponent<AudioSource>().Stop();
 		if (other.gameObject.name == "cody") {
 			GetComponent<AudioSource>().PlayOneShot(SerenaToCody);
 		}
@@ -102,6 +103,7 @@ public class SerenaInteraction : MonoBehaviour {
 	//---------------------------------------------------
 
 	void OnTriggerExit (Collider other) {
+		GetComponent<AudioSource>().Stop();
 		Debug.Log ("Uscito");
 
 		// resetto tutte le trasformazioni

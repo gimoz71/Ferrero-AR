@@ -59,6 +59,7 @@ namespace Vuforia
             else
             {
                 OnTrackingLost();
+				GetComponent<AudioSource> ().Stop();
             }
         }
 

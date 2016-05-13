@@ -40,6 +40,7 @@ public class EinsteinInteraction : MonoBehaviour {
 	// inizio interazione audio (play one time)
 	//---------------------------------------------------
 	void OnTriggerEnter (Collider other) {
+		GetComponent<AudioSource>().Stop();
 		if (other.gameObject.name == "cody") {
 			GetComponent<AudioSource>().PlayOneShot(EinsteinToCody);
 			// attivo animazione per Einstein verso Cody
@@ -104,6 +105,7 @@ public class EinsteinInteraction : MonoBehaviour {
 	//---------------------------------------------------
 
 	void OnTriggerExit (Collider other) {
+		GetComponent<AudioSource>().Stop();
 		Debug.Log ("Uscito");
 
 		// resetto tutte le trasformazioni

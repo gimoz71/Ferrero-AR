@@ -38,6 +38,7 @@ public class CodyInteraction : MonoBehaviour {
 	// inizio interazione audio (play one time)
 	//---------------------------------------------------
 	void OnTriggerEnter (Collider other) {
+		GetComponent<AudioSource>().Stop();
 		if (other.gameObject.name == "einstein") {
 			GetComponent<AudioSource>().PlayOneShot(CodyToEinstein);
 			// attivo animazione per Cody verso Einstein
@@ -102,6 +103,7 @@ public class CodyInteraction : MonoBehaviour {
 	//---------------------------------------------------
 
 	void OnTriggerExit (Collider other) {
+		GetComponent<AudioSource>().Stop();
 		Debug.Log ("Uscito");
 
 		// resetto tutte le trasformazioni
