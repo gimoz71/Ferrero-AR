@@ -176,6 +176,7 @@ ModelImporter:
     7400008: SerenaEinstein
     7400010: SerenaCody
     7400012: SerenaStart
+    7400014: SerenaCody
     9500000: //RootNode
     13700000: Racket
     13700002: Serena
@@ -571,9 +572,9 @@ ModelImporter:
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: SerenaCody
-      takeName: SerenaCody
+      takeName: rig|SerenaCody
       firstFrame: 0
-      lastFrame: 111
+      lastFrame: 411
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
