@@ -388,9 +388,9 @@ ModelImporter:
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: SerenaEinstein
-      takeName: SerenaEinstein
+      takeName: rig|SerenaEinstein
       firstFrame: 0
-      lastFrame: 140
+      lastFrame: 177
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
