@@ -20,9 +20,13 @@ namespace Vuforia
     
         #endregion // PRIVATE_MEMBER_VARIABLES
 
+
+		#region PUBLIC_MEMBER_VARIABLES
+
 		public AudioClip audioIdle;
+		public GameObject charObject;
 
-
+		#endregion
 
         #region UNTIY_MONOBEHAVIOUR_METHODS
     
@@ -60,6 +64,7 @@ namespace Vuforia
             {
                 OnTrackingLost();
 				GetComponent<AudioSource> ().Stop();
+				charObject.GetComponent<AudioSource> ().Stop ();
             }
         }
 

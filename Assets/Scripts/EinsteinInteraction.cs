@@ -19,7 +19,7 @@ public class EinsteinInteraction : MonoBehaviour {
 	public AudioClip EinsteinToCody;
 	public AudioClip EinsteinToSerena;
 
-
+	public GameObject aObject;
 
 	//---------------------------------------------------
 	// settaggi all'avvio
@@ -31,23 +31,29 @@ public class EinsteinInteraction : MonoBehaviour {
 		animator = GetComponent <Animator> ();
 		animator.SetBool ("lookCody", false);
 		animator.SetBool ("lookSerena", false);
-		//GetComponent<AudioSource>().PlayOneShot(CodyIdle);
 	}
-
 
 
 	//---------------------------------------------------
 	// inizio interazione audio (play one time)
 	//---------------------------------------------------
 	void OnTriggerEnter (Collider other) {
+
+		// trovo e stoppo l'audio di non interazione che si avvia con OnTrackingFound
+		aObject.GetComponent<AudioSource> ().Stop ();
+
+		//blocco qualsiasi audio attivo nell'oggetto corrente
 		GetComponent<AudioSource>().Stop();
+
 		if (other.gameObject.name == "cody") {
 			GetComponent<AudioSource>().PlayOneShot(EinsteinToCody);
+
 			// attivo animazione per Einstein verso Cody
 			animator.SetBool ("lookCody", true);
 		}
 		if (other.gameObject.name == "serena") {
 			GetComponent<AudioSource>().PlayOneShot(EinsteinToSerena);
+
 			// attivo animazione per Einstein verso Serena
 			animator.SetBool ("lookSerena", true);
 		}
@@ -74,8 +80,6 @@ public class EinsteinInteraction : MonoBehaviour {
 			rot.z = 0f;
 			rot.x = 0f;
 			transform.localRotation = Quaternion.Euler(rot);
-
-
 		}
 
 
@@ -93,10 +97,7 @@ public class EinsteinInteraction : MonoBehaviour {
 			rot.z = 0f;
 			rot.x = 0f;
 			transform.localRotation = Quaternion.Euler(rot);
-
-
 		}
-
 	}
 
 

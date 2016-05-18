@@ -19,7 +19,7 @@ public class SerenaInteraction : MonoBehaviour {
 	public AudioClip SerenaToCody;
 	public AudioClip SerenaToEinstein;
 
-
+	public GameObject aObject;
 
 	//---------------------------------------------------
 	// settaggi all'avvio
@@ -31,21 +31,31 @@ public class SerenaInteraction : MonoBehaviour {
 		animator = GetComponent <Animator> ();
 		animator.SetBool ("lookCody", false);
 		animator.SetBool ("lookEinstein", false);
-		//GetComponent<AudioSource>().PlayOneShot(CodyIdle);
 	}
-
 
 
 	//---------------------------------------------------
 	// inizio interazione audio (play one time)
 	//---------------------------------------------------
 	void OnTriggerEnter (Collider other) {
+
+		// trovo e stoppo l'audio di non interazione che si avvia con OnTrackingFound
+		aObject.GetComponent<AudioSource> ().Stop ();
+
+		//blocco qualsiasi audio attivo nell'oggetto corrente
 		GetComponent<AudioSource>().Stop();
+
 		if (other.gameObject.name == "cody") {
 			GetComponent<AudioSource>().PlayOneShot(SerenaToCody);
+
+			// attivo animazione per Serena verso Cody
+			animator.SetBool ("lookCody", true);
 		}
 		if (other.gameObject.name == "einstein") {
 			GetComponent<AudioSource>().PlayOneShot(SerenaToEinstein);
+
+			// attivo animazione per Serena verso Einstein
+			animator.SetBool ("lookEinstein", true);
 		}
 	}
 
@@ -62,7 +72,7 @@ public class SerenaInteraction : MonoBehaviour {
 
 		if (other.gameObject.name == "cody") {
 
-			// gurda Cody
+			// guarda Cody
 			transform.LookAt(targetCody); 
 
 			// script di fix assi di rotazione 
@@ -70,9 +80,6 @@ public class SerenaInteraction : MonoBehaviour {
 			rot.z = 0f;
 			rot.x = 0f;
 			transform.localRotation = Quaternion.Euler(rot);
-
-			// attivo animazione per Serena verso Cody
-			animator.SetBool ("lookCody", true);
 		}
 
 
@@ -82,7 +89,7 @@ public class SerenaInteraction : MonoBehaviour {
 
 		if (other.gameObject.name == "einstein") {
 
-			// gurda Einstein
+			// guarda Einstein
 			transform.LookAt(targetEinstein); 
 
 			// script di fix assi di rotazione 
@@ -90,11 +97,7 @@ public class SerenaInteraction : MonoBehaviour {
 			rot.z = 0f;
 			rot.x = 0f;
 			transform.localRotation = Quaternion.Euler(rot);
-
-			// attivo animazione per Serena verso Einstein
-			animator.SetBool ("lookEinstein", true);
 		}
-
 	}
 
 

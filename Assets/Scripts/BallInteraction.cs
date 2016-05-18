@@ -3,23 +3,20 @@ using System.Collections;
 
 
 //---------------------------------------------------
-// Script interazione Cody Simpson
+// Script interazione Serena
 //---------------------------------------------------
 
-public class CodyInteraction : MonoBehaviour {
+public class BallInteraction : MonoBehaviour {
 
 	// dichiarazioni variabili ed oggetti
 
 	private Animator animator;
+	public Transform targetCody;
 	public Transform targetEinstein;
-	public Transform targetSerena;
 
-	//inizializzo interazioni audio
-	public AudioClip CodyIdle;
-	public AudioClip CodyToEinstein;
-	public AudioClip CodyToSerena;
 
-	public GameObject aObject;
+
+
 
 	//---------------------------------------------------
 	// settaggi all'avvio
@@ -29,33 +26,19 @@ public class CodyInteraction : MonoBehaviour {
 
 		// mi assicuro che tutte le variabil di interazione siano a zero (idle state in )
 		animator = GetComponent <Animator> ();
+		animator.SetBool ("lookCody", false);
 		animator.SetBool ("lookEinstein", false);
-		animator.SetBool ("lookSerena", false);
 	}
+
 
 
 	//---------------------------------------------------
 	// inizio interazione audio (play one time)
 	//---------------------------------------------------
 	void OnTriggerEnter (Collider other) {
-
-		// trovo e stoppo l'audio di non interazione che si avvia con OnTrackingFound
-		aObject.GetComponent<AudioSource> ().Stop ();
-
-		//blocco qualsiasi audio attivo nell'oggetto corrente
-		GetComponent<AudioSource>().Stop();
-
-		if (other.gameObject.name == "einstein") {
-			GetComponent<AudioSource>().PlayOneShot(CodyToEinstein);
-
-			// attivo animazione per Cody verso Einstein
-			animator.SetBool ("lookEinstein", true);
+		if (other.gameObject.name == "cody") {
 		}
-		if (other.gameObject.name == "serena") {
-			GetComponent<AudioSource>().PlayOneShot(CodyToSerena);
-
-			// attivo animazione per Cody verso Serena
-			animator.SetBool ("lookSerena", true);
+		if (other.gameObject.name == "einstein") {
 		}
 	}
 
@@ -67,12 +50,32 @@ public class CodyInteraction : MonoBehaviour {
 
 
 		//-------------------------------
-		// interazione Cody <-> Einstein
+		// interazione Serena <-> Cody
+		//-------------------------------
+
+		if (other.gameObject.name == "cody") {
+
+			// gurda Cody
+			transform.LookAt(targetCody); 
+
+			// script di fix assi di rotazione 
+			var rot = transform.localRotation.eulerAngles;
+			rot.z = 0f;
+			rot.x = 0f;
+			transform.localRotation = Quaternion.Euler(rot);
+
+			// attivo animazione per Serena verso Cody
+			animator.SetBool ("BalllookCody", true);
+		}
+
+
+		//-------------------------------
+		// interazione Serena <-> Einstein 
 		//-------------------------------
 
 		if (other.gameObject.name == "einstein") {
 
-			// guarda Einstein
+			// gurda Einstein
 			transform.LookAt(targetEinstein); 
 
 			// script di fix assi di rotazione 
@@ -80,24 +83,11 @@ public class CodyInteraction : MonoBehaviour {
 			rot.z = 0f;
 			rot.x = 0f;
 			transform.localRotation = Quaternion.Euler(rot);
+
+			// attivo animazione per Serena verso Einstein
+			animator.SetBool ("BalllookEinstein", true);
 		}
 
-
-		//-------------------------------
-		// interazione Cody <-> Serena 
-		//-------------------------------
-
-		if (other.gameObject.name == "serena") {
-
-			// guarda Serena
-			transform.LookAt(targetSerena); 
-
-			// script di fix assi di rotazione 
-			var rot = transform.localRotation.eulerAngles;
-			rot.z = 0f;
-			rot.x = 0f;
-			transform.localRotation = Quaternion.Euler(rot);
-		}
 	}
 
 
@@ -106,7 +96,6 @@ public class CodyInteraction : MonoBehaviour {
 	//---------------------------------------------------
 
 	void OnTriggerExit (Collider other) {
-		GetComponent<AudioSource>().Stop();
 		Debug.Log ("Uscito");
 
 		// resetto tutte le trasformazioni
@@ -115,10 +104,8 @@ public class CodyInteraction : MonoBehaviour {
 		transform.localScale = Vector3.one;
 
 		// setto tutte le variabili di inerazione a zero
-		animator.SetBool ("lookEinstein", false);
-		animator.SetBool ("lookSerena", false);
+		animator.SetBool ("BalllookCody", false);
+		animator.SetBool ("BalllookEinstein", false);
 
-		// rilancio audio no interazione
-		GetComponent<AudioSource>().PlayOneShot(CodyIdle);
 	}
 }
