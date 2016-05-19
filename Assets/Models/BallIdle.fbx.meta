@@ -26,6 +26,7 @@ ModelImporter:
     7400002: mov-ball|SphereAction
     7400004: Sphere|SphereAction
     7400006: BallStart
+    7400008: BallEinstein
     9500000: //RootNode
     13700000: Sphere
   materials:
@@ -94,94 +95,6 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: mov-ball|SphereAction
-      takeName: mov-ball|SphereAction
-      firstFrame: 0
-      lastFrame: 1
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask:
-      - path: 
-        weight: 1
-      - path: root-mov-ball
-        weight: 1
-      - path: root-mov-ball/Bone
-        weight: 1
-      - path: root-mov-ball/Bone/Bone_end
-        weight: 1
-      - path: root-mov-ball/mov-ball
-        weight: 1
-      - path: root-mov-ball/mov-ball/Bone 1
-        weight: 1
-      - path: root-mov-ball/mov-ball/Bone 1/Bone_end 1
-        weight: 1
-      - path: Sphere
-        weight: 1
-      maskType: 0
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Sphere|SphereAction
-      takeName: Sphere|SphereAction
-      firstFrame: 0
-      lastFrame: 1
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask:
-      - path: 
-        weight: 1
-      - path: root-mov-ball
-        weight: 1
-      - path: root-mov-ball/Bone
-        weight: 1
-      - path: root-mov-ball/Bone/Bone_end
-        weight: 1
-      - path: root-mov-ball/mov-ball
-        weight: 1
-      - path: root-mov-ball/mov-ball/Bone 1
-        weight: 1
-      - path: root-mov-ball/mov-ball/Bone 1/Bone_end 1
-        weight: 1
-      - path: Sphere
-        weight: 1
-      maskType: 0
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
       name: BallStart
       takeName: mov-ball|BallIdle
       firstFrame: 210
@@ -193,6 +106,50 @@ ModelImporter:
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: root-mov-ball
+        weight: 1
+      - path: root-mov-ball/Bone
+        weight: 1
+      - path: root-mov-ball/Bone/Bone_end
+        weight: 1
+      - path: root-mov-ball/mov-ball
+        weight: 1
+      - path: root-mov-ball/mov-ball/Bone 1
+        weight: 1
+      - path: root-mov-ball/mov-ball/Bone 1/Bone_end 1
+        weight: 1
+      - path: Sphere
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: BallEinstein
+      takeName: mov-ball|BallEinstein
+      firstFrame: 0
+      lastFrame: 271
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0

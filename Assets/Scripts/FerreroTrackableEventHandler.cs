@@ -56,15 +56,15 @@ namespace Vuforia
             if (newStatus == TrackableBehaviour.Status.DETECTED ||
                 newStatus == TrackableBehaviour.Status.TRACKED ||
                 newStatus == TrackableBehaviour.Status.EXTENDED_TRACKED)
-            {
-                OnTrackingFound();
+			{
 				GetComponent<AudioSource> ().PlayOneShot (audioIdle);
+                OnTrackingFound();
             }
             else
             {
-                OnTrackingLost();
 				GetComponent<AudioSource> ().Stop();
 				charObject.GetComponent<AudioSource> ().Stop ();
+                OnTrackingLost();
             }
         }
 

@@ -39,9 +39,10 @@ public class SerenaInteraction : MonoBehaviour {
 	//---------------------------------------------------
 	void OnTriggerEnter (Collider other) {
 
-		// trovo e stoppo l'audio di non interazione che si avvia con OnTrackingFound
-		aObject.GetComponent<AudioSource> ().Stop ();
-
+		if (other.gameObject.name != "BallIdle" ) {
+			// trovo e stoppo l'audio di non interazione che si avvia con OnTrackingFound
+			aObject.GetComponent<AudioSource> ().Stop ();
+		}
 		//blocco qualsiasi audio attivo nell'oggetto corrente
 		GetComponent<AudioSource>().Stop();
 

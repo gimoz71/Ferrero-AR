@@ -26,8 +26,8 @@ public class BallInteraction : MonoBehaviour {
 
 		// mi assicuro che tutte le variabil di interazione siano a zero (idle state in )
 		animator = GetComponent <Animator> ();
-		animator.SetBool ("lookCody", false);
-		animator.SetBool ("lookEinstein", false);
+		animator.SetBool ("BalllookCody", false);
+		animator.SetBool ("BalllookEinstein", false);
 	}
 
 
@@ -96,7 +96,7 @@ public class BallInteraction : MonoBehaviour {
 	//---------------------------------------------------
 
 	void OnTriggerExit (Collider other) {
-		Debug.Log ("Uscito");
+		//Debug.Log ("Uscito");
 
 		// resetto tutte le trasformazioni
 		transform.localRotation = Quaternion.identity;
