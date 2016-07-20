@@ -47,6 +47,7 @@ public class EinsteinInteraction : MonoBehaviour {
 
 		if (other.gameObject.name == "cody") {
 			GetComponent<AudioSource>().PlayOneShot(EinsteinToCody);
+			GetComponent<AudioSource>().Play();
 
 			// attivo animazione per Einstein verso Cody
 			animator.SetBool ("lookCody", true);

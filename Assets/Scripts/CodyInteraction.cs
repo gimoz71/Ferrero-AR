@@ -52,8 +52,8 @@ public class CodyInteraction : MonoBehaviour {
 			animator.SetBool ("lookEinstein", true);
 		}
 		if (other.gameObject.name == "serena") {
-			GetComponent<AudioSource>().PlayOneShot(CodyToSerena);
-
+			//GetComponent<AudioSource>().PlayOneShot(CodyToSerena);
+			GetComponent<AudioSource>().Play();
 			// attivo animazione per Cody verso Serena
 			animator.SetBool ("lookSerena", true);
 		}
