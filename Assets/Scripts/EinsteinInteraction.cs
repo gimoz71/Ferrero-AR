@@ -21,6 +21,20 @@ public class EinsteinInteraction : MonoBehaviour {
 
 	public GameObject aObject;
 
+	// Nuova gestione clip audio
+
+	public void startEinsteinIdle () {
+		GetComponent<AudioSource>().PlayOneShot(EinsteinIdle);
+	}
+
+	public void startEinsteinToCody () {
+		GetComponent<AudioSource>().PlayOneShot(EinsteinToCody);
+	}
+
+	public void startEinsteinToSerena () {
+		GetComponent<AudioSource>().PlayOneShot(EinsteinToSerena);
+	}
+
 	//---------------------------------------------------
 	// settaggi all'avvio
 	//---------------------------------------------------
@@ -40,20 +54,20 @@ public class EinsteinInteraction : MonoBehaviour {
 	void OnTriggerEnter (Collider other) {
 
 		// trovo e stoppo l'audio di non interazione che si avvia con OnTrackingFound
-		aObject.GetComponent<AudioSource> ().Stop ();
+		// disabled per test sui singoli script per personaggio -> aObject.GetComponent<AudioSource> ().Stop ();
 
-		//blocco qualsiasi audio attivo nell'oggetto corrente
+		// blocco qualsiasi audio attivo nell'oggetto corrente
 		GetComponent<AudioSource>().Stop();
 
 		if (other.gameObject.name == "cody") {
-			GetComponent<AudioSource>().PlayOneShot(EinsteinToCody);
-			GetComponent<AudioSource>().Play();
+			// disabled per test sui singoli script per personaggio -> GetComponent<AudioSource>().PlayOneShot(EinsteinToCody);
+			// disabled per test sui singoli script per personaggio -> GetComponent<AudioSource>().Play();
 
 			// attivo animazione per Einstein verso Cody
 			animator.SetBool ("lookCody", true);
 		}
 		if (other.gameObject.name == "serena") {
-			GetComponent<AudioSource>().PlayOneShot(EinsteinToSerena);
+			// disabled per test sui singoli script per personaggio -> GetComponent<AudioSource>().PlayOneShot(EinsteinToSerena);
 
 			// attivo animazione per Einstein verso Serena
 			animator.SetBool ("lookSerena", true);
@@ -66,6 +80,8 @@ public class EinsteinInteraction : MonoBehaviour {
 	//---------------------------------------------------
 	void OnTriggerStay (Collider other) {
 
+		// blocco qualsiasi audio attivo nell'oggetto corrente
+		//GetComponent<AudioSource>().Stop();
 
 		//-------------------------------
 		// interazione Einstein <-> Cody
@@ -111,15 +127,15 @@ public class EinsteinInteraction : MonoBehaviour {
 		Debug.Log ("Uscito");
 
 		// resetto tutte le trasformazioni
-		transform.localRotation = Quaternion.identity;
-		transform.localPosition = Vector3.zero;
-		transform.localScale = Vector3.one;
+		//transform.localRotation = Quaternion.identity;
+		//transform.localPosition = Vector3.zero;
+		//transform.localScale = Vector3.one;
 
 		// setto tutte le variabili di inerazione a zero
 		animator.SetBool ("lookCody", false);
 		animator.SetBool ("lookSerena", false);
 
 		// rilancio audio no interazione
-		GetComponent<AudioSource>().PlayOneShot(EinsteinIdle);
+		// disabled per test sui singoli script per personaggio -> GetComponent<AudioSource>().PlayOneShot(EinsteinIdle);
 	}
 }

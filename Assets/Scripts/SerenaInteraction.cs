@@ -21,6 +21,20 @@ public class SerenaInteraction : MonoBehaviour {
 
 	public GameObject aObject;
 
+	// Nuova gestione clip audio
+
+	public void startSerenaIdle () {
+		GetComponent<AudioSource>().PlayOneShot(SerenaIdle);
+	}
+
+	public void startSerenaToCody () {
+		GetComponent<AudioSource>().PlayOneShot(SerenaToCody);
+	}
+
+	public void startSerenaToEinstein () {
+		GetComponent<AudioSource>().PlayOneShot(SerenaToEinstein);
+	}
+
 	//---------------------------------------------------
 	// settaggi all'avvio
 	//---------------------------------------------------
@@ -39,11 +53,10 @@ public class SerenaInteraction : MonoBehaviour {
 	//---------------------------------------------------
 	void OnTriggerEnter (Collider other) {
 
-		if (other.gameObject.name != "BallIdle" ) {
-			// trovo e stoppo l'audio di non interazione che si avvia con OnTrackingFound
-			aObject.GetComponent<AudioSource> ().Stop ();
-		}
-		//blocco qualsiasi audio attivo nell'oggetto corrente
+		// trovo e stoppo l'audio di non interazione che si avvia con OnTrackingFound
+		// disabled per test sui singoli script per personaggio -> aObject.GetComponent<AudioSource> ().Stop ();
+
+		// blocco qualsiasi audio attivo nell'oggetto corrente
 		GetComponent<AudioSource>().Stop();
 
 		if (other.gameObject.name == "cody") {
@@ -53,7 +66,7 @@ public class SerenaInteraction : MonoBehaviour {
 			animator.SetBool ("lookCody", true);
 		}
 		if (other.gameObject.name == "einstein") {
-			GetComponent<AudioSource>().PlayOneShot(SerenaToEinstein);
+			// disabled per test sui singoli script per personaggio -> GetComponent<AudioSource>().PlayOneShot(SerenaToEinstein);
 
 			// attivo animazione per Serena verso Einstein
 			animator.SetBool ("lookEinstein", true);
@@ -66,6 +79,8 @@ public class SerenaInteraction : MonoBehaviour {
 	//---------------------------------------------------
 	void OnTriggerStay (Collider other) {
 
+		// blocco qualsiasi audio attivo nell'oggetto corrente
+		//GetComponent<AudioSource>().Stop();
 
 		//-------------------------------
 		// interazione Serena <-> Cody
@@ -111,15 +126,15 @@ public class SerenaInteraction : MonoBehaviour {
 		Debug.Log ("Uscito");
 
 		// resetto tutte le trasformazioni
-		transform.localRotation = Quaternion.identity;
-		transform.localPosition = Vector3.zero;
-		transform.localScale = Vector3.one;
+		//transform.localRotation = Quaternion.identity;
+		//transform.localPosition = Vector3.zero;
+		//transform.localScale = Vector3.one;
 
 		// setto tutte le variabili di inerazione a zero
 		animator.SetBool ("lookCody", false);
 		animator.SetBool ("lookEinstein", false);
 
 		// rilancio audio no interazione
-		GetComponent<AudioSource>().PlayOneShot(SerenaIdle);
+		// disabled per test sui singoli script per personaggio -> GetComponent<AudioSource>().PlayOneShot(SerenaIdle);
 	}
 }

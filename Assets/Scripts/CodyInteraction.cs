@@ -21,6 +21,20 @@ public class CodyInteraction : MonoBehaviour {
 
 	public GameObject aObject;
 
+	// Nuova gestione clip audio
+
+	public void startCodyIdle () {
+		GetComponent<AudioSource>().PlayOneShot(CodyIdle);
+	}
+
+	public void startCodyToSerena () {
+		GetComponent<AudioSource>().PlayOneShot(CodyToSerena);
+	}
+
+	public void startCodyToEinstein () {
+		GetComponent<AudioSource>().PlayOneShot(CodyToEinstein);
+	}
+
 	//---------------------------------------------------
 	// settaggi all'avvio
 	//---------------------------------------------------
@@ -40,20 +54,20 @@ public class CodyInteraction : MonoBehaviour {
 	void OnTriggerEnter (Collider other) {
 
 		// trovo e stoppo l'audio di non interazione che si avvia con OnTrackingFound
-		aObject.GetComponent<AudioSource> ().Stop ();
+		// disabled per test sui singoli script per personaggio -> aObject.GetComponent<AudioSource> ().Stop ();
 
-		//blocco qualsiasi audio attivo nell'oggetto corrente
+		// blocco qualsiasi audio attivo nell'oggetto corrente
 		GetComponent<AudioSource>().Stop();
 
 		if (other.gameObject.name == "einstein") {
-			GetComponent<AudioSource>().PlayOneShot(CodyToEinstein);
+			// disabled per test sui singoli script per personaggio -> GetComponent<AudioSource>().PlayOneShot(CodyToEinstein);
 
 			// attivo animazione per Cody verso Einstein
 			animator.SetBool ("lookEinstein", true);
 		}
 		if (other.gameObject.name == "serena") {
-			//GetComponent<AudioSource>().PlayOneShot(CodyToSerena);
-			GetComponent<AudioSource>().Play();
+			// disabled per test sui singoli script per personaggio -> //GetComponent<AudioSource>().PlayOneShot(CodyToSerena);
+			// disabled per test sui singoli script per personaggio -> //GetComponent<AudioSource>().Play();
 			// attivo animazione per Cody verso Serena
 			animator.SetBool ("lookSerena", true);
 		}
@@ -65,6 +79,8 @@ public class CodyInteraction : MonoBehaviour {
 	//---------------------------------------------------
 	void OnTriggerStay (Collider other) {
 
+		// blocco qualsiasi audio attivo nell'oggetto corrente
+		//GetComponent<AudioSource>().Stop();
 
 		//-------------------------------
 		// interazione Cody <-> Einstein
@@ -110,15 +126,15 @@ public class CodyInteraction : MonoBehaviour {
 		Debug.Log ("Uscito");
 
 		// resetto tutte le trasformazioni
-		transform.localRotation = Quaternion.identity;
-		transform.localPosition = Vector3.zero;
-		transform.localScale = Vector3.one;
+		//transform.localRotation = Quaternion.identity;
+		//transform.localPosition = Vector3.zero;
+		//transform.localScale = Vector3.one;
 
 		// setto tutte le variabili di inerazione a zero
 		animator.SetBool ("lookEinstein", false);
 		animator.SetBool ("lookSerena", false);
 
 		// rilancio audio no interazione
-		GetComponent<AudioSource>().PlayOneShot(CodyIdle);
+		// disabled per test sui singoli script per personaggio -> GetComponent<AudioSource>().PlayOneShot(CodyIdle);
 	}
 }

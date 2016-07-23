@@ -23,7 +23,6 @@ namespace Vuforia
 
 		#region PUBLIC_MEMBER_VARIABLES
 
-		public AudioClip audioIdle;
 		public GameObject charObject;
 
 		#endregion
@@ -57,12 +56,12 @@ namespace Vuforia
                 newStatus == TrackableBehaviour.Status.TRACKED ||
                 newStatus == TrackableBehaviour.Status.EXTENDED_TRACKED)
 			{
-				GetComponent<AudioSource> ().PlayOneShot (audioIdle);
+				//GetComponent<AudioSource> ().PlayOneShot (audioIdle);
                 OnTrackingFound();
             }
             else
             {
-				GetComponent<AudioSource> ().Stop();
+				//GetComponent<AudioSource> ().Stop();
 				charObject.GetComponent<AudioSource> ().Stop ();
                 OnTrackingLost();
             }
@@ -83,7 +82,7 @@ namespace Vuforia
 
 			foreach (Animator anim in animatorComponents) {
 				anim.SetBool("Start", true);
-				Debug.Log ("***anim component: " + anim.name);
+				Debug.Log ("***START anim component: " + anim.name);
 			}
             // Enable rendering:
             foreach (Renderer component in rendererComponents)
@@ -103,13 +102,37 @@ namespace Vuforia
 
         private void OnTrackingLost()
         {
+			
+
             Renderer[] rendererComponents = GetComponentsInChildren<Renderer>(true);
 			Collider[] colliderComponents = GetComponentsInChildren<Collider>(true);
 			Animator[] animatorComponents = GetComponentsInChildren<Animator> (); 
 
+			foreach(GameObject fooObj in GameObject.FindGameObjectsWithTag("Player"))
+			{
+
+				if (fooObj.gameObject.name == "cody") {
+					fooObj.GetComponent <Animator> ().SetBool ("lookEinstein", false);
+					fooObj.GetComponent <Animator> ().SetBool ("lookSerena", false);
+					fooObj.GetComponent<AudioSource>().Stop();
+				}
+				if (fooObj.gameObject.name == "einstein") {
+					fooObj.GetComponent <Animator> ().SetBool ("lookCody", false);
+					fooObj.GetComponent <Animator> ().SetBool ("lookSerena", false);
+					fooObj.GetComponent<AudioSource>().Stop();
+				}
+				if (fooObj.gameObject.name == "serena") {
+					fooObj.GetComponent <Animator> ().SetBool ("lookCody", false);
+					fooObj.GetComponent <Animator> ().SetBool ("lookEinstein", false);
+					fooObj.GetComponent<AudioSource>().Stop();
+				}
+			
+			}
+
 			foreach (Animator anim in animatorComponents) {
+				
 				anim.SetBool("Start", false);
-				Debug.Log ("***anim component: " + anim.name);
+				Debug.Log ("***STOP anim component: " + anim.name);
 			}
             // Disable rendering:
             foreach (Renderer component in rendererComponents)
