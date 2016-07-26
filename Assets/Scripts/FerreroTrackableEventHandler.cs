@@ -82,7 +82,7 @@ namespace Vuforia
 
 			foreach (Animator anim in animatorComponents) {
 				anim.SetBool("Start", true);
-				Debug.Log ("***START anim component: " + anim.name);
+				//Debug.Log ("***START anim component: " + anim.name);
 			}
             // Enable rendering:
             foreach (Renderer component in rendererComponents)
@@ -96,7 +96,7 @@ namespace Vuforia
                 component.enabled = true;
             }
 
-            Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " found");
+            //Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " found");
         }
 
 
@@ -108,23 +108,37 @@ namespace Vuforia
 			Collider[] colliderComponents = GetComponentsInChildren<Collider>(true);
 			Animator[] animatorComponents = GetComponentsInChildren<Animator> (); 
 
-			foreach(GameObject fooObj in GameObject.FindGameObjectsWithTag("Player"))
-			{
+			foreach(GameObject fooObj in GameObject.FindGameObjectsWithTag("Player")) {
 
 				if (fooObj.gameObject.name == "cody") {
 					fooObj.GetComponent <Animator> ().SetBool ("lookEinstein", false);
 					fooObj.GetComponent <Animator> ().SetBool ("lookSerena", false);
 					fooObj.GetComponent<AudioSource>().Stop();
+
+					// resetto tutte le trasformazioni
+					fooObj.transform.localRotation = Quaternion.identity;
+					fooObj.transform.localPosition = Vector3.zero;
+					fooObj.transform.localScale = Vector3.one;
 				}
 				if (fooObj.gameObject.name == "einstein") {
 					fooObj.GetComponent <Animator> ().SetBool ("lookCody", false);
 					fooObj.GetComponent <Animator> ().SetBool ("lookSerena", false);
 					fooObj.GetComponent<AudioSource>().Stop();
+
+					// resetto tutte le trasformazioni
+					fooObj.transform.localRotation = Quaternion.identity;
+					fooObj.transform.localPosition = Vector3.zero;
+					fooObj.transform.localScale = Vector3.one;
 				}
 				if (fooObj.gameObject.name == "serena") {
 					fooObj.GetComponent <Animator> ().SetBool ("lookCody", false);
 					fooObj.GetComponent <Animator> ().SetBool ("lookEinstein", false);
 					fooObj.GetComponent<AudioSource>().Stop();
+
+					// resetto tutte le trasformazioni
+					fooObj.transform.localRotation = Quaternion.identity;
+					fooObj.transform.localPosition = Vector3.zero;
+					fooObj.transform.localScale = Vector3.one;
 				}
 			
 			}
@@ -132,7 +146,7 @@ namespace Vuforia
 			foreach (Animator anim in animatorComponents) {
 				
 				anim.SetBool("Start", false);
-				Debug.Log ("***STOP anim component: " + anim.name);
+				//Debug.Log ("***STOP anim component: " + anim.name);
 			}
             // Disable rendering:
             foreach (Renderer component in rendererComponents)
@@ -146,7 +160,7 @@ namespace Vuforia
                 component.enabled = false;
             }
 
-            Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " lost");
+            //Debug.Log("Trackable " + mTrackableBehaviour.TrackableName + " lost");
         }
 
         #endregion // PRIVATE_METHODS

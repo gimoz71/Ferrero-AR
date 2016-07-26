@@ -10,29 +10,49 @@ public class EinsteinInteraction : MonoBehaviour {
 
 	// dichiarazioni variabili ed oggetti
 
+	private AudioSource audiosource;
 	private Animator animator;
 	public Transform targetCody;
+
 	public Transform targetSerena;
+	private bool audiotrigger;
 
 	//inizializzo interazioni audio
 	public AudioClip EinsteinIdle;
 	public AudioClip EinsteinToCody;
+	public AudioClip EinsteinToCodyTwo;
+	public AudioClip EinsteinToCodyThree;
 	public AudioClip EinsteinToSerena;
+	public AudioClip EinsteinToSerenaTwo;
 
-	public GameObject aObject;
 
 	// Nuova gestione clip audio
 
+	public void stopAudio () {
+		audiosource.Stop();
+	}
+
 	public void startEinsteinIdle () {
-		GetComponent<AudioSource>().PlayOneShot(EinsteinIdle);
+		audiosource.PlayOneShot(EinsteinIdle);
 	}
 
 	public void startEinsteinToCody () {
-		GetComponent<AudioSource>().PlayOneShot(EinsteinToCody);
+		audiosource.PlayOneShot(EinsteinToCody);
+	}
+
+	public void startEinsteinToCodyTwo () {
+		audiosource.PlayOneShot(EinsteinToCodyTwo);
+	}
+	public void startEinsteinToCodyThree () {
+		audiosource.PlayOneShot(EinsteinToCodyThree);
 	}
 
 	public void startEinsteinToSerena () {
-		GetComponent<AudioSource>().PlayOneShot(EinsteinToSerena);
+		audiosource.PlayOneShot(EinsteinToSerena);
+	}
+
+	public void startEinsteinToSerenaTwo () {
+		audiosource.PlayOneShot(EinsteinToSerenaTwo);
 	}
 
 	//---------------------------------------------------
@@ -42,9 +62,13 @@ public class EinsteinInteraction : MonoBehaviour {
 	void Start(){
 
 		// mi assicuro che tutte le variabil di interazione siano a zero (idle state in )
+		audiosource = GetComponent<AudioSource> ();
 		animator = GetComponent <Animator> ();
 		animator.SetBool ("lookCody", false);
 		animator.SetBool ("lookSerena", false);
+
+		audiotrigger=true;
+
 	}
 
 
@@ -53,21 +77,15 @@ public class EinsteinInteraction : MonoBehaviour {
 	//---------------------------------------------------
 	void OnTriggerEnter (Collider other) {
 
-		// trovo e stoppo l'audio di non interazione che si avvia con OnTrackingFound
-		// disabled per test sui singoli script per personaggio -> aObject.GetComponent<AudioSource> ().Stop ();
-
 		// blocco qualsiasi audio attivo nell'oggetto corrente
-		GetComponent<AudioSource>().Stop();
+		audiosource.Stop();
 
 		if (other.gameObject.name == "cody") {
-			// disabled per test sui singoli script per personaggio -> GetComponent<AudioSource>().PlayOneShot(EinsteinToCody);
-			// disabled per test sui singoli script per personaggio -> GetComponent<AudioSource>().Play();
 
 			// attivo animazione per Einstein verso Cody
 			animator.SetBool ("lookCody", true);
 		}
 		if (other.gameObject.name == "serena") {
-			// disabled per test sui singoli script per personaggio -> GetComponent<AudioSource>().PlayOneShot(EinsteinToSerena);
 
 			// attivo animazione per Einstein verso Serena
 			animator.SetBool ("lookSerena", true);
@@ -81,7 +99,13 @@ public class EinsteinInteraction : MonoBehaviour {
 	void OnTriggerStay (Collider other) {
 
 		// blocco qualsiasi audio attivo nell'oggetto corrente
-		//GetComponent<AudioSource>().Stop();
+
+		if (audiotrigger) {
+
+			Debug.Log ("************************  EINSTEIN testBool: ON     ******************");
+			audiosource.Stop ();
+			audiotrigger = false;
+		}
 
 		//-------------------------------
 		// interazione Einstein <-> Cody
@@ -123,19 +147,18 @@ public class EinsteinInteraction : MonoBehaviour {
 	//---------------------------------------------------
 
 	void OnTriggerExit (Collider other) {
-		GetComponent<AudioSource>().Stop();
-		Debug.Log ("Uscito");
+
+		audiotrigger = true;
+		audiosource.Stop();
 
 		// resetto tutte le trasformazioni
-		//transform.localRotation = Quaternion.identity;
-		//transform.localPosition = Vector3.zero;
-		//transform.localScale = Vector3.one;
+		transform.localRotation = Quaternion.identity;
+		transform.localPosition = Vector3.zero;
+		transform.localScale = Vector3.one;
 
 		// setto tutte le variabili di inerazione a zero
 		animator.SetBool ("lookCody", false);
 		animator.SetBool ("lookSerena", false);
 
-		// rilancio audio no interazione
-		// disabled per test sui singoli script per personaggio -> GetComponent<AudioSource>().PlayOneShot(EinsteinIdle);
 	}
 }

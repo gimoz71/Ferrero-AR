@@ -1070,7 +1070,7 @@ ModelImporter:
       name: CodyIdle
       takeName: rig|CodyIdle
       firstFrame: 0
-      lastFrame: 181
+      lastFrame: 400
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1090,7 +1090,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.015675552
+      - time: 0.046563584
         functionName: startCodyIdle
         data: CodyIdle
         objectReferenceParameter: {instanceID: 0}
@@ -1257,9 +1257,16 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.021348827
-        functionName: startCodyToEinstein
-        data: CodyToEinstein
+      - time: 0.07179928
+        functionName: startCodyToEinsteinOne
+        data: CodyToEinsteinOne
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.3850085
+        functionName: startCodyToEinsteinTwo
+        data: CodyToEinsteinTwo
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
@@ -1564,7 +1571,7 @@ ModelImporter:
       name: CodySerena
       takeName: rig|CodySerena
       firstFrame: 0
-      lastFrame: 411
+      lastFrame: 500
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1587,6 +1594,13 @@ ModelImporter:
       - time: 0.02754614
         functionName: startCodyToSerena
         data: CodyToSerena
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.09131478
+        functionName: startCodyToSerenaDiscoLoop
+        data: CodyToSerenaDiscoLoop
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
