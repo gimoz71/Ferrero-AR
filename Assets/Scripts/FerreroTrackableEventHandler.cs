@@ -110,7 +110,7 @@ namespace Vuforia
 
 			foreach(GameObject fooObj in GameObject.FindGameObjectsWithTag("Player")) {
 
-				if (fooObj.gameObject.name == "cody") {
+				if (fooObj.gameObject.name == "cody" && (fooObj.GetComponent <Animator> ().GetBool ("lookEinstein") || fooObj.GetComponent <Animator> ().GetBool ("lookSerena") ) ) {
 					fooObj.GetComponent <Animator> ().SetBool ("lookEinstein", false);
 					fooObj.GetComponent <Animator> ().SetBool ("lookSerena", false);
 					fooObj.GetComponent<AudioSource>().Stop();
@@ -120,7 +120,7 @@ namespace Vuforia
 					fooObj.transform.localPosition = Vector3.zero;
 					fooObj.transform.localScale = Vector3.one;
 				}
-				if (fooObj.gameObject.name == "einstein") {
+				if (fooObj.gameObject.name == "einstein" && (fooObj.GetComponent <Animator> ().GetBool ("lookCody") || fooObj.GetComponent <Animator> ().GetBool ("lookSerena") ) ) {
 					fooObj.GetComponent <Animator> ().SetBool ("lookCody", false);
 					fooObj.GetComponent <Animator> ().SetBool ("lookSerena", false);
 					fooObj.GetComponent<AudioSource>().Stop();
@@ -130,7 +130,7 @@ namespace Vuforia
 					fooObj.transform.localPosition = Vector3.zero;
 					fooObj.transform.localScale = Vector3.one;
 				}
-				if (fooObj.gameObject.name == "serena") {
+				if (fooObj.gameObject.name == "serena" && (fooObj.GetComponent <Animator> ().GetBool ("lookCody") || fooObj.GetComponent <Animator> ().GetBool ("lookEinstein") ) ) {
 					fooObj.GetComponent <Animator> ().SetBool ("lookCody", false);
 					fooObj.GetComponent <Animator> ().SetBool ("lookEinstein", false);
 					fooObj.GetComponent<AudioSource>().Stop();
